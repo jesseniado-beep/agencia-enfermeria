@@ -68,6 +68,7 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
+                 
                 <div class="row justify-content-center">
                     <!-- Portfolio Item 1-->
                     <div class="col-md-6 col-lg-4 mb-5">
@@ -125,6 +126,14 @@
                     </div>
                 </div>
             </div>
+       <!-- === INICIO DE TARIFAS DE EXCEL === -->
+<div class="container mt-5">
+    <h3 class="text-center text-secondary mb-4">Nuestras Tarifas de Servicios</h3>
+    <div class="row mb-5" id="servicios-contenedor">
+        <!-- El motor de Excel inyectará las tarjetas aquí -->
+    </div>
+</div>
+<!-- === FIN DE TARIFAS DE EXCEL === -->
         </section>
         <!-- About Section-->
         <section class="page-section text-white mb-0" id="about" style="background-color: #003366 !important;">
@@ -287,7 +296,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="./assets/img/portfolio/bañoencama2.jpg" alt="Baño en cama" />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Brindamos asistencia integral en la higiene y confort del paciente encamado, asegurando su comodidad, previniendo infecciones y protegiendo la integridad de la piel, resptando su dignidad bajo el cuidado profesional.</p>
+                                    <p class="mb-4">Brindamos asistencia integral en la higiene y confort del paciente encamado, asegurando su comodidad, previniendo infecciones y protegiendo la integridad de la piel, respetando su dignidad bajo el cuidado profesional.</p>
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
                                     </button>
@@ -435,5 +444,43 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+       <script>
+  const contenedor = document.getElementById('servicios-contenedor');
+  const sheetId = '1d9UBHFFtYsbDAXIe_x5aB3hRxHdt3YaMtGGfBp3ngEE';
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+
+  fetch(url)
+    .then(respuesta => respuesta.text())
+    .then(texto => {
+      const jsonPuro = texto.substring(47).slice(0, -2);
+      const datos = JSON.parse(jsonPuro);
+      
+      // AQUI ESTA LA MAGIA: .slice(1) hace que se salte la fila de los títulos
+      const filas = datos.table.rows.slice(1);
+      
+      let htmlTarjetas = '';
+
+      filas.forEach(fila => {
+        const nombre = fila.c[0] ? fila.c[0].v : '';
+        const descripcion = fila.c[1] ? fila.c[1].v : '';
+        const precio = fila.c[2] ? fila.c[2].v : '';
+
+        htmlTarjetas += `
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+              <div class="card-body text-center">
+                <h5 class="card-title text-primary fw-bold mb-3">${nombre}</h5>
+                <p class="card-text text-muted">${descripcion}</p>
+              </div>
+              <div class="card-footer bg-transparent border-0 text-center pb-4">
+                <span class="badge bg-success p-2 fs-6">${precio}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      contenedor.innerHTML = htmlTarjetas;
+    });
+</script>
     </body>
 </html>
