@@ -19,4 +19,4 @@ Para ver este proyecto en tu computadora local, sigue estos pasos:
 1. Clona este repositorio usando tu terminal:
    `git clone https://github.com/jesseniado-beep/agencia-enfermeria.git`
 2. Entra a la carpeta del proyecto.
-3. Abre el archivo `index.html` en tu navegador web.
+3. Abre el archivo `index.html` en tu navegador.
