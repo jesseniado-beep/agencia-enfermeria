@@ -5,7 +5,7 @@ Landing page profesional para servicios de atención médica domiciliaria, desar
 ## Autora
 Jessenia
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 Para el desarrollo de este proyecto se utilizaron las siguientes tecnologías:
 * **HTML5:** Estructura de la página web.
 * **CSS3:** Estilos personalizados.
@@ -13,7 +13,7 @@ Para el desarrollo de este proyecto se utilizaron las siguientes tecnologías:
 * **JavaScript:** Funcionalidad básica de la plantilla.
 * **Font Awesome:** Iconografía del sitio.
 
-## 🚀 Instalación y Despliegue
+## Instalación y Despliegue
 Para ver este proyecto en tu computadora local, sigue estos pasos:
 
 1. Clona este repositorio usando tu terminal:
